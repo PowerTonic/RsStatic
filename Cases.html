@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPhone Cases</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" href="/images/favicons/logo.webp" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #1a1a1a;
+            background-color: #fafafa;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        /* Typography */
+        .text-3xl {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        .text-2xl {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            line-height: 1.3;
+            letter-spacing: -0.01em;
+        }
+
+        .text-lg {
+            font-size: 1.125rem;
+            line-height: 1.5;
+        }
+
+        .text-sm {
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+
+        /* Card Design */
+        .case-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .case-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .case-info {
+            padding: 1.5rem;
+        }
+
+        .model-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background-color: #f3f4f6;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 0.75rem;
+        }
+
+        .description {
+            color: #6b7280;
+            font-size: 0.9375rem;
+            line-height: 1.6;
+        }
+
+        /* Grid Layout */
+        .grid {
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+
+        @media (min-width: 768px) {
+            .grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        /* Featured Section */
+        .featured-section {
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .featured-section h2 {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 3rem;
+        }
+
+        .featured-section h2:after {
+            content: '';
+            position: absolute;
+            bottom: -0.75rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: #4b5563;
+        }
+
+        .featured-case {
+            max-width: 28rem;
+            margin: 0 auto;
+        }
+
+        /* Images */
+        .aspect-square {
+            aspect-ratio: 1 / 1;
+        }
+
+        .case-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .case-card:hover .case-image {
+            transform: scale(1.05);
+        }
+
+        /* Navigation */
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+        }
+
+        .nav-button {
+            padding: 0.75rem 1.5rem;
+            background-color: #f3f4f6;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 500;
+            color: #374151;
+        }
+
+        .nav-button:hover {
+            background-color: #e5e7eb;
+            transform: translateY(-1px);
+        }
+        /* Footer */
+        .site-footer {
+            background: white;
+            padding: 2rem 0;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-text {
+            color: #6b7280;
+            font-size: 0.9375rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-3xl text-center mb-8">iPhone Cases</h1>
+
+        <div class="grid" id="cases-grid">
+            <!-- Grid items will be populated by JavaScript -->
+        </div>
+
+        <div class="featured-section">
+            <h2 class="text-2xl font-bold">Featured Case</h2>
+            <div class="featured-case case-card">
+                <div class="aspect-square">
+                    <img id="featured-image" src="" alt="" class="case-image" />
+                </div>
+                <div class="case-info">
+                    <span id="featured-model" class="model-badge"></span>
+                    <p id="featured-description" class="description"></p>
+                    <div class="nav-buttons">
+                        <button onclick="prevCase()" class="nav-button">Previous</button>
+                        <button onclick="nextCase()" class="nav-button">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container text-center">
+            <p class="footer-text">&copy; <script>document.write(new Date().getFullYear())</script> RS Accessories. All rights reserved.</p>
+        </div>
+    </footer>
+</div>
+    
+
+    <script>
+        const cases = [
+            { src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_E0914.JPG-I0uMFGaQJ7ppOlw6uqd4V5EwprLbhv.jpeg", alt: "Colorful diamond and complex pattern knitted cases", model: "Various" },
+            { src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_E0460.JPG-yLhT1hPOG52uWfwV3fRskAT9vo4zGm.jpeg", alt: "Red and blue chevron knit pattern case", model: "iPhone 13 Pro Max" },
+            { src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_E0462.JPG-XTXiRMbJyKJSNmxGh1gPRMGdnCfOdy.jpeg", alt: "Black and gray chevron knit pattern case", model: "iPhone 13 Pro Max" },
+            { src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_E0471.JPG-9VrkiuD33NPuCVKDoQ8u26CGDV7cnL.jpeg", alt: "Black with pink heart-shaped knit pattern case", model: "iPhone 14 Pro Max" },
+            { src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_E0466.JPG-3z1ldSffF9W7glMEa6L8tkqcjuHN7Q.jpeg", alt: "Colorful diamond-shaped knit pattern case", model: "iPhone 14 Pro" },
+            { src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_E0469.JPG-Bn4ozsJXrEJzkrDWdOrpm2xZ80Dz0p.jpeg", alt: "Blue pixelated mountain or wave pattern case", model: "iPhone 14 Pro" },
+            { src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_E0470.JPG-ukdPOCpuL7jAmcOtCN6YY22EJAHD2n.jpeg", alt: "Clear case with colorful stickers", model: "iPhone 14" },
+            { src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_E0463.JPG-yB1EWAxQV7ktCXTKYzrtwbW3V00cyW.jpeg", alt: "Teal chevron knit pattern on dark background case", model: "iPhone 15 Pro Max" }
+        ];
+
+        function createCaseCard(caseItem) {
+            return `
+                <div class="case-card">
+                    <div class="aspect-square">
+                        <img src="${caseItem.src}" alt="${caseItem.alt}" class="case-image" />
+                    </div>
+                    <div class="case-info">
+                        <span class="model-badge">${caseItem.model}</span>
+                        <p class="description">${caseItem.alt}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        let currentCase = 0;
+
+        function updateFeaturedCase() {
+            const featuredCase = cases[currentCase];
+            document.getElementById('featured-image').src = featuredCase.src;
+            document.getElementById('featured-image').alt = featuredCase.alt;
+            document.getElementById('featured-model').textContent = featuredCase.model;
+            document.getElementById('featured-description').textContent = featuredCase.alt;
+        }
+
+        function nextCase() {
+            currentCase = (currentCase + 1) % cases.length;
+            updateFeaturedCase();
+        }
+
+        function prevCase() {
+            currentCase = (currentCase - 1 + cases.length) % cases.length;
+            updateFeaturedCase();
+        }
+
+        window.onload = function() {
+            const gridContainer = document.getElementById('cases-grid');
+            gridContainer.innerHTML = cases.map(createCaseCard).join('');
+            updateFeaturedCase();
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" href="/images/favicons/logo.webp" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #fff;
+        }
+
+        .hero-section {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background-color: rgba(248, 249, 250, 0.7);
+        }
+
+        .background-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                rgba(255, 255, 255, 0.3),
+                rgba(255, 255, 255, 0.4)
+            );
+            z-index: 1;
+        }
+
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_E0460.JPG-yLhT1hPOG52uWfwV3fRskAT9vo4zGm.jpeg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.5;
+            filter: brightness(1.1) contrast(1.1);
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 2rem;
+            max-width: 800px;
+            backdrop-filter: blur(5px);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .brand {
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeInUp 1.2s ease forwards;
+        }
+
+        .logo {
+            font-family: 'Tenor Sans', sans-serif;
+            font-size: clamp(3rem, 10vw, 5rem);
+            color: #1a1a1a;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            position: relative;
+            letter-spacing: 0.1em;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background: #1a1a1a;
+        }
+
+        .cta-button {
+            position: relative;
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            margin-top: 2rem;
+            font-size: 1rem;
+            color: #1a1a1a;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 400;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #1a1a1a;
+            border-radius: 2px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.3s forwards;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #1a1a1a;
+            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+            z-index: -1;
+        }
+
+        .cta-button:hover {
+            color: #fff;
+            background: transparent;
+        }
+
+        .cta-button:hover::before {
+            transform: translateX(100%);
+        }
+
+        .decorative-border {
+            position: absolute;
+            border: 1px solid rgba(26, 26, 26, 0.2);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .border-top {
+            top: 2rem;
+            left: 2rem;
+            right: 2rem;
+            height: 0;
+        }
+
+        .border-bottom {
+            bottom: 2rem;
+            left: 2rem;
+            right: 2rem;
+            height: 0;
+        }
+
+        .border-left {
+            left: 2rem;
+            top: 2rem;
+            bottom: 2rem;
+            width: 0;
+        }
+
+        .border-right {
+            right: 2rem;
+            top: 2rem;
+            bottom: 2rem;
+            width: 0;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: clamp(2.5rem, 8vw, 4rem);
+            }
+
+            .decorative-border {
+                display: none;
+            }
+
+            .cta-button {
+                padding: 1rem 2.5rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-section">
+        <div class="background-image"></div>
+        <div class="background-wrapper"></div>
+        <div class="decorative-border border-top"></div>
+        <div class="decorative-border border-bottom"></div>
+        <div class="decorative-border border-left"></div>
+        <div class="decorative-border border-right"></div>
+        <div class="content-wrapper">
+            <div class="brand">
+                <h1 class="logo">RS Accessories</h1>
+            </div>
+            <a href="/Accessories.html" class="cta-button">
+                Welcome
+            </a>
+        </div>
+    </div>
+</body>
+</html>
